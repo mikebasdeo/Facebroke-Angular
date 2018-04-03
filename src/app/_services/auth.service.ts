@@ -23,9 +23,7 @@ export class AuthService {
     login(model: any) {
 
         // headers for request options
-        const headers = new Headers({'Content-type': 'Application/json'});
-        const options = new RequestOptions({headers: headers});
-        return this.http.post(this.baseUrl + 'login' , model, options).map((response: Response) => {
+        return this.http.post(this.baseUrl + 'login' , model, this.requestOptions()).map((response: Response) => {
 
             const user = response.json();
             console.log(user);
@@ -38,4 +36,12 @@ export class AuthService {
         });
     }
 
+    register(model: any) {
+      return this.http.post(this.baseUrl + 'register', model, this.requestOptions());
+    }
+
+    private requestOptions() {
+        const headers = new Headers({'Content-type': 'Application/json'});
+        return new RequestOptions({headers: headers});
+    }
 }

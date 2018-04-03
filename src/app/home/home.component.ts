@@ -23,13 +23,13 @@ export class HomeComponent implements OnInit {
     this.registerMode = registerMode;
   }
 
-  getValues() {
-    this.http.get('http://localhost:5000/api/values').subscribe(response => { this.values = response.json(); });
+  // getValues() {
+  //   this.http.get('http://localhost:5000/api/values').subscribe(response => { this.values = response.json(); });
 
-  }
+  // }
 
   ngOnInit() {
-    this.getValues();
+   // this.getValues();
   }
 
 

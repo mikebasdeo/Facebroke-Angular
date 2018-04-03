@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,21 +8,26 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  // attributes
+  // ATTRIBUTES
   model: any = {};
 
   // this will get data from the parent component (home) to the child (register)
-  @Input() valuesFromHome: any;
+  // @Input() valuesFromHome: any;
 
   // this will send data from the child (register) to the parent (home)
   @Output() cancelRegister = new EventEmitter();
 
-  // constructors
-  constructor() { }
+  // constructors (inject auth service)
+  constructor(private authService: AuthService) { }
 
   // methods
   register() {
-    console.log(this.model);
+    // need to attach to the auth.service for registering.
+    this.authService.register(this.model).subscribe(() => {
+      console.log('Registration Successful');
+    }, error => {
+      console.log(error);
+    });
   }
 
   cancel() {
