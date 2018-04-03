@@ -3,14 +3,14 @@
  */
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { userInfo } from 'os';
+// import { userInfo } from 'os';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
 
     // attributes
-    baseUrl = 'http://localhost:5000/api/auth';
+    baseUrl = 'http://localhost:5000/api/auth/';
     userToken: any;
 
     // constructors

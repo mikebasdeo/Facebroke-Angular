@@ -18,7 +18,8 @@
       </ul>
 
 
-      <form #loginForm='ngForm' class="navbar-form navbar-right" (ngSubmit)="login()">
+      <!--LOGIN NAVIGATION BAR (BOOTSTRAP)-->
+      <form *ngIf="!loggedIn()" #loginForm='ngForm' class="navbar-form navbar-right" (ngSubmit)="login()">
         <div class="form-group">
           <input type="text" placeholder="Email" class="form-control" requilred name="username" [(ngModel)]="model.username">
         </div>
@@ -27,6 +28,23 @@
         </div>
         <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
       </form>
+
+      <!--SUCCESSFUL LOGIN NAVIGATION BAR (BOOTSTRAP)-->
+      <ul a *ngIf="loggedIn()" class="nav navbar-nav navbar-right">
+          <li><a (click)="logout()">Logout</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome User <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+
+
+
+
     </div><!--/.navbar-collapse -->
   </div>
 </nav>
