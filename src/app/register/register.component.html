@@ -17,6 +17,16 @@
     <input type="password" class="form-control" placeholder="Password" required name="password" [(ngModel)]="model.password">
   </div>
 
+
+<div class="form-group">
+  <label for="favouriteValue">What is your favorite value?</label>
+  <select class="form-control" id="favouriteValue">
+    <!--This displays info taken from the parent component (home) -->
+    <option *ngFor="let value of valuesFromHome" [value]="value">{{value.name}}</option>
+  </select>
+</div>
+
+
   <div class="form-group text-center">
     <button class="btn btn-success" type="submit">Register</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
