@@ -1,0 +1,22 @@
+<!--Two different div's that will only be displayed one at a time-->
+<div style="text-align:center">
+  <h1>Welcome to the Home Page</h1>
+
+  <p class="lead"> 
+    Facebroke
+  </p>
+
+    <div class="text-center">
+      <button class="btn btn-primary btn-lg" (click)="registerToggle()">Register</button>
+      <button class="btn btn-info btn-lg">Learn More</button>
+    </div>
+</div>
+
+<!--Only display this when register is clicked-->
+<div *ngIf="registerMode" class="container">
+  <!--Centeres the div on the page (bootstrap 3 only)-->
+  <div class="col-md-4 col-md-offset-4">
+    <app-register></app-register>
+  </div>
+</div>
+
