@@ -8,6 +8,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="router-link-active" >InfinityBook</a>
+      <a class="navbar-text" *ngIf="!loggedIn()" [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a>
     </div>
 
     <!--If Logged In-->
@@ -36,6 +37,8 @@
         <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
       </form>
 
+      
+
       <!--SUCCESSFUL LOGIN NAVIGATION BAR (BOOTSTRAP)-->
       <ul a *ngIf="loggedIn()" class="nav navbar-nav navbar-right">
           <li class="dropdown" dropdown>
@@ -46,8 +49,8 @@
               <li><a (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a></li>
             </ul>
           </li>
-        </ul>
 
+        </ul>
 
 
 

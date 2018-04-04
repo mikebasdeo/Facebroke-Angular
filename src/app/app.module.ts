@@ -16,6 +16,8 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { AuthGuard } from './_guards/auth.guard';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { appRoutes } from './routes';
     ListsComponent,
     ListsComponent
 ,
-    MessagesComponent
+    MessagesComponent,
+    AboutComponent
 ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { appRoutes } from './routes';
   ],
   providers: [
     AuthService,
-    AlertifyService
+    AlertifyService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
