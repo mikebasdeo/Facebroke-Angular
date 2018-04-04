@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
-import { tokenNotExpired } from 'angular2-jwt';
+import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 
 
 @Injectable()
@@ -17,6 +17,8 @@ export class AuthService {
     // ATTRIBUTES
     baseUrl = 'http://localhost:5000/api/auth/';
     userToken: any;
+    decodedToken: any;
+    jwtHelper: JwtHelper = new JwtHelper();
 
     // CONSTRUCTORS
     constructor(private http: Http) { }
@@ -33,12 +35,16 @@ export class AuthService {
             const user = response.json();
             console.log(user);
             // get the succesful login json token and store the token in the browser.
-            if (user) {
+            if (user && user.tokenString) {
                 localStorage.setItem('token', user.tokenString);
                 this.userToken = user.tokenString;
-
+                this.decodedToken = this.jwtHelper.decodeToken(user.tokenString);
+                console.log(this.decodedToken);
             }
         }).catch(this.handleError);
+
+
+
     }
 
     register(model: any) {
