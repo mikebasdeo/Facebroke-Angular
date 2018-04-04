@@ -7,14 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Facebroke</a>
+      <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="router-link-active" >InfinityBook</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
 
+    <!--If Logged In-->
+    <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" *ngIf="loggedIn()">
-        <li><a href="#">Matches</a></li>
-        <li><a href="#">List</a></li>
-        <li><a href="#">Messages</a></li>
+        <li><a [routerLink]="['/members']" routerLinkActive="router-link-active" >Matches</a></li>
+        <li><a [routerLink]="['/lists']" routerLinkActive="router-link-active" >List</a></li>
+        <li><a [routerLink]="['/messages']" routerLinkActive="router-link-active" >Messages</a></li>
       </ul>
 
 
@@ -32,7 +33,7 @@
       <!--SUCCESSFUL LOGIN NAVIGATION BAR (BOOTSTRAP)-->
       <ul a *ngIf="loggedIn()" class="nav navbar-nav navbar-right">
           <li class="dropdown" dropdown>
-            <a href="#" class="dropdown-toggle" dropdownToggle>Welcome {{authService.decodedToken?.unique_name | titlecase}} <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" dropdownToggle>Welcome Super{{authService.decodedToken?.unique_name | titlecase}} <span class="caret"></span></a>
             <ul class="dropdown-menu" *dropdownMenu>
               <li><a href="#"><i class="fa fa-user"></i>Edit Profile</a></li>
               <li role="separator" class="divider"></li>
