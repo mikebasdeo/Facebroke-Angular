@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="router-link-active" >InfinityBook</a>
-      <a class="navbar-text" *ngIf="!loggedIn()" [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a>
+      <a class="navbar-brand" *ngIf="!loggedIn()" [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a>
     </div>
 
     <!--If Logged In-->

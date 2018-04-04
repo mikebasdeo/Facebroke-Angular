@@ -8,9 +8,19 @@ import { AboutComponent } from './about/about.component';
 
 export const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
+
+    // All paths inside here are protected using the auth.guard.ts
+    {
+        path: '',
+        runGuardsAndResolvers: 'always',
+        canActivate: [AuthGuard],
+        children: [
+            {path: 'members', component: MemberListComponent},
+            {path: 'messages', component: MessagesComponent},
+            {path: 'lists', component: ListsComponent},
+        ]
+    },
+
     {path: 'about', component: AboutComponent},
-    {path: 'members', component: MemberListComponent, canActivate: [AuthGuard]},
-    {path: 'messages', component: MessagesComponent},
-    {path: 'lists', component: ListsComponent},
     {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
